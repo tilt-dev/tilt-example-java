@@ -12,6 +12,7 @@ your project for live updates.
 
 - [0-base](0-base): The simplest way to start
 - [1-measured](1-measured): Use `local_resource` to measure your deployment time
+- [2-optimized](2-optimized): Compile executable Jars and copy them into Docker
 
 ## Other Configurations
 
