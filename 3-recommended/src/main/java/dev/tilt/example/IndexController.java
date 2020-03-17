@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
-  private final long startTimeSecs = 1584485551;
-  private final long startTimeNanos = 152370994;
+  private final long startTimeSecs = 1584487413;
+  private final long startTimeNanos = 950683561;
   private final String updateDuration;
 
   public IndexController() {
