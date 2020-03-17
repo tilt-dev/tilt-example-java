@@ -1,0 +1,8 @@
+# -*- mode: Python -*-
+
+custom_build(
+  'example-java-image',
+  './gradlew jibDockerBuild --image $EXPECTED_REF',
+  deps=['src'])
+k8s_yaml('kubernetes.yaml')
+k8s_resource('example-java', port_forwards=8000)
