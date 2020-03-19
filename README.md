@@ -13,10 +13,12 @@ your project for live updates.
 - [0-base](0-base): The simplest way to start
 - [1-measured](1-measured): Use `local_resource` to measure your deployment time
 - [2-optimized](2-optimized): Compile executable Jars and copy them into Docker
-- [3-recommended](3-recommended): Live update executable Jars
+- [3-unpacked](3-unpacked): Unpack the executable Jar into Docker layers
+- [4-recommended](4-recommended): Live update executable Jars
 
 ## Other Configurations
 
+- [3-recommended](3-recommended): The recommended setup from an earlier version of this guide.
 - [101-jib](101-jib): An example of how to integrate Tilt with the [Jib Java image builder](https://github.com/GoogleContainerTools/jib)
 
 ## License
