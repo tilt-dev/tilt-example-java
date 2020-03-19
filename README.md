@@ -18,8 +18,13 @@ your project for live updates.
 
 ## Other Configurations
 
-- [3-recommended](3-recommended): The recommended setup from an earlier version of this guide.
-- [101-jib](101-jib): An example of how to integrate Tilt with the [Jib Java image builder](https://github.com/GoogleContainerTools/jib)
+- [3-recommended](3-recommended): The recommended setup from an earlier version
+  of this guide.
+- [101-jib](101-jib): An example of how to integrate Tilt with the [Jib Java
+  image builder](https://github.com/GoogleContainerTools/jib)
+- [102-jib-live-update](102-jib-live-update): An example of how to use
+  live_update with Jib. It requires a lot of knowledge of Jib internals, but you
+  can make it work!
 
 ## License
 
