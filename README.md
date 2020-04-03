@@ -1,5 +1,7 @@
 # tilt-example-java
 
+[![Build Status](https://circleci.com/gh/windmilleng/tilt-example-java/tree/master.svg?style=shield)](https://circleci.com/gh/windmilleng/tilt-example-java)
+
 An example project that demonstrates a live-updating Java server in Kubernetes.
 
 We used [Spring Initializr](https://start.spring.io/) to bootstrap the project,
