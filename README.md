@@ -2,7 +2,7 @@
 
 [![Build Status](https://circleci.com/gh/windmilleng/tilt-example-java/tree/master.svg?style=shield)](https://circleci.com/gh/windmilleng/tilt-example-java)
 
-An example project that demonstrates a live-updating Java server in Kubernetes.
+An example project that demonstrates a live-updating Java server in Kubernetes. Read [doc](https://docs.tilt.dev/example_java.html).
 
 We used [Spring Initializr](https://start.spring.io/) to bootstrap the project,
 then added Docker & Kubernetes configs for running it in Kubernetes.
