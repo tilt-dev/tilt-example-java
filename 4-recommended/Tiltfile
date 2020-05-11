@@ -16,10 +16,11 @@ local_resource(
   deps=['src', 'build.gradle'],
   resource_deps = ['deploy'])
 
-docker_build(
+custom_build(
   'example-java-image',
-  './build/jar',
-  dockerfile='./Dockerfile',
+  deps=['./build/jar'],
+  command='buildah bud -t $EXPECTED_REF -f Dockerfile build/jar && buildah push $EXPECTED_REF $EXPECTED_REF',
+  skips_local_docker=True,
   live_update=[
     sync('./build/jar/BOOT-INF/lib', '/app/lib'),
     sync('./build/jar/META-INF', '/app/META-INF'),
