@@ -7,6 +7,12 @@ An example project that demonstrates a live-updating Java server in Kubernetes. 
 We used [Spring Initializr](https://start.spring.io/) to bootstrap the project,
 then added Docker & Kubernetes configs for running it in Kubernetes.
 
+To run these examples, you should also have:
+- javac (a JDK)
+- unzip
+- rsync
+- python
+
 ## Fastest Deployment
 
 This progression of examples shows how to start, and incrementally update

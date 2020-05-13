@@ -8,5 +8,5 @@ jobs:
       - setup_remote_docker
       - checkout
       - run: echo "deb http://ftp.us.debian.org/debian sid main" >> /etc/apt/sources.list
-      - run: apt update && apt install -y openjdk-8-jdk unzip rsync
+      - run: apt update && apt install -y openjdk-8-jdk unzip rsync python
       - run: with-kind-cluster.sh test/test.sh

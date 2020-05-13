@@ -5,12 +5,16 @@
 # shows you how to set up a custom workflow that measures it.
 local_resource(
     'deploy',
-    './record-start-time.sh',
+    'python record-start-time.py',
 )
+
+gradlew = "./gradlew"
+if os.name == "nt":
+  gradlew = "gradlew.bat"
 
 local_resource(
   'example-java-compile',
-  './gradlew bootJar && ' +
+  gradlew + ' bootJar && ' +
   'unzip -o build/libs/example-0.0.1-SNAPSHOT.jar -d build/jar-staging && ' +
   'rsync --inplace --checksum -r build/jar-staging/ build/jar',
   deps=['src', 'build.gradle'],
