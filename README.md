@@ -1,6 +1,6 @@
 # tilt-example-java
 
-[![Build Status](https://circleci.com/gh/windmilleng/tilt-example-java/tree/master.svg?style=shield)](https://circleci.com/gh/windmilleng/tilt-example-java)
+[![Build Status](https://circleci.com/gh/tilt-dev/tilt-example-java/tree/master.svg?style=shield)](https://circleci.com/gh/tilt-dev/tilt-example-java)
 
 An example project that demonstrates a live-updating Java server in Kubernetes. Read [doc](https://docs.tilt.dev/example_java.html).
 
