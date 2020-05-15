@@ -1,5 +1,8 @@
 # -*- mode: Python -*-
 
+# For more on Extensions, see: https://docs.tilt.dev/extensions.html
+load('ext://restart_process', 'docker_build_with_restart')
+
 # Records the current time, then kicks off a server update.
 # Normally, you would let Tilt do deploys automatically, but this
 # shows you how to set up a custom workflow that measures it.
@@ -20,16 +23,17 @@ local_resource(
   deps=['src', 'build.gradle'],
   resource_deps = ['deploy'])
 
-docker_build(
+docker_build_with_restart(
   'example-java-image',
   './build/jar',
+  entrypoint=['java', '-noverify', '-cp', '.:./lib/*', 'dev.tilt.example.ExampleApplication'],
   dockerfile='./Dockerfile',
   live_update=[
     sync('./build/jar/BOOT-INF/lib', '/app/lib'),
     sync('./build/jar/META-INF', '/app/META-INF'),
     sync('./build/jar/BOOT-INF/classes', '/app'),
   ],
-  entrypoint = 'find . | entr -r java -noverify -cp .:./lib/* dev.tilt.example.ExampleApplication')
+)
 
 k8s_yaml('kubernetes.yaml')
 k8s_resource('example-java', port_forwards=8000,
