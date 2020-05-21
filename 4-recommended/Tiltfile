@@ -18,8 +18,9 @@ if os.name == "nt":
 local_resource(
   'example-java-compile',
   gradlew + ' bootJar && ' +
+  'rm -rf build/jar-staging && ' +
   'unzip -o build/libs/example-0.0.1-SNAPSHOT.jar -d build/jar-staging && ' +
-  'rsync --inplace --checksum -r build/jar-staging/ build/jar',
+  'rsync --delete --inplace --checksum -r build/jar-staging/ build/jar',
   deps=['src', 'build.gradle'],
   resource_deps = ['deploy'])
 
