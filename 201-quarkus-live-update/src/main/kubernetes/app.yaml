@@ -1,0 +1,40 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: m2-cache
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  quarkus-sync-demo
+spec:
+  selector:
+    matchLabels:
+      app:  quarkus-sync-demo
+  template:
+    metadata:
+      labels:
+        app:  quarkus-sync-demo
+    spec:
+      containers:
+        - name:  quarkus-sync-demo
+          image: quarkus-sync-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http-web
+              containerPort: 8080
+            - name: jdwp-debug
+              containerPort: 5005  
+          volumeMounts:
+            - mountPath: /root/.m2
+              name: m2-cache
+      volumes:
+        - name: m2-cache
+          persistentVolumeClaim:
+            claimName: m2-cache

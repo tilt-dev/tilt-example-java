@@ -1,0 +1,11 @@
+# -*- mode: Python -*-
+
+docker_build(
+  'quarkus-sync-image',
+  '.',
+  dockerfile='./src/main/docker/Dockerfile',
+  live_update=[sync('.', '/project')],
+  entrypoint = 'mvn quarkus:dev')
+
+k8s_yaml('src/main/kubernetes/app.yaml')
+k8s_resource('quarkus-sync-demo', port_forwards=[8080,5005])
