@@ -1,4 +1,5 @@
 FROM maven
 WORKDIR /project
-ADD . /project/
+ADD src /project/src
+ADD pom.xml /project/pom.xml
 ENTRYPOINT mvn quarkus:dev

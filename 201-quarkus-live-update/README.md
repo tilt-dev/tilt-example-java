@@ -32,14 +32,6 @@ If it's being used buildah as builder, start the environment with:
 tilt up -f Tiltfile.buildah
 ```
 
-Open a new terminal and navigate to `$PROJECT_HOME`,
-
-​	Deploy the demo application:
-
-```
-kubectl apply -f src/main/k8s/app.yaml
-```
-
 The command creates the following resources:
 
 - a kubernetes deployment called **quarkus-sync-demo**
