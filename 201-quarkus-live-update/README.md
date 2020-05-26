@@ -17,7 +17,7 @@ Clone the demo sources locally:
 
 ```
 git clone https://github.com/tilt-dev/tilt-example-java.git
-cd 201-quarkus-live-update/
+cd tilt-example-java/201-quarkus-live-update/
 ```
 
 If it's being used docker as builder, start the environment with:
