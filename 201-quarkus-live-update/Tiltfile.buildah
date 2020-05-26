@@ -1,0 +1,15 @@
+# -*- mode: Python -*-
+
+custom_build(
+  'quarkus-sync-image',
+  deps=['.'],
+  command='buildah bud -t $EXPECTED_REF -f ./src/main/docker/Dockerfile . && buildah push $EXPECTED_REF $EXPECTED_REF',
+  skips_local_docker = True,
+  live_update = [
+    sync('./src/', '/project/src'),
+    sync('./src/pom.xml', '/project/pom.xml')  
+  ],
+  entrypoint = 'mvn quarkus:dev')
+
+k8s_yaml('src/main/kubernetes/app.yaml')
+k8s_resource('quarkus-sync-demo', port_forwards=[8080,5005])

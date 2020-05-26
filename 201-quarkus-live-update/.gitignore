@@ -1,0 +1,6 @@
+.stfolder
+.settings
+.settings/*
+.project
+.editorconfig
+target
