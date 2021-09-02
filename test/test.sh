@@ -24,3 +24,7 @@ tilt down --file 3-unpacked/Tiltfile
 echo "Testing 4-recommended"
 tilt ci --file 4-recommended/Tiltfile
 tilt down --file 4-recommended/Tiltfile
+
+echo "Testing 401-spring-boot-layertools"
+tilt ci --file 401-spring-boot-layertools/Tiltfile
+tilt down --file 401-spring-boot-layertools/Tiltfile
