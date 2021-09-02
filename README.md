@@ -26,8 +26,6 @@ your project for live updates.
 
 ## Other Configurations
 
-- [3-recommended](3-recommended): The recommended setup from an earlier version
-  of this guide.
 - [101-jib](101-jib): An example of how to integrate Tilt with the [Jib Java
   image builder](https://github.com/GoogleContainerTools/jib)
 - [102-jib-live-update](102-jib-live-update): An example of how to use
@@ -36,6 +34,10 @@ your project for live updates.
 - [201-quarkus-live-update](201-quarkus-live-update): An example of how to use
   live_update with [Quarkus](https://quarkus.io/), a container-first, hot-reloading framework for writing
   Java applications.
+- [401-spring-boot-layertools](401-spring-boot-layertools): An example of how to
+  further optimize the Spring Boot image with the latest recommendations from
+  [the Spring Boot Docker
+  guide](https://github.com/spring-guides/top-spring-boot-docker#spring-boot-layer-index).
 
 ## License
 
