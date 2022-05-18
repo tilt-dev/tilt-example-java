@@ -1,0 +1,13 @@
+schemaVersion: 2.1.0
+attributes:
+  controller.devfile.io/storage-type: ephemeral
+  controller.devfile.io/scc: container-build
+components:
+  - name: tilt-container
+    container:
+      image: quay.io/mloriedo/universal-developer-image:buildah
+      memoryLimit: 2G
+      memoryRequest: 256Mi
+      cpuLimit: 500m
+      cpuRequest: 30m
+      endpoints:
