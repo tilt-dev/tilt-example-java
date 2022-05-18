@@ -6,8 +6,7 @@ components:
   - name: tilt-container
     container:
       image: quay.io/mloriedo/universal-developer-image:buildah
-      memoryLimit: 2G
+      memoryLimit: 1G
       memoryRequest: 256Mi
-      cpuLimit: 500m
+      cpuLimit: 200m
       cpuRequest: 30m
-      endpoints:
