@@ -1,6 +1,7 @@
 # tilt-example-java
 
 [![Build Status](https://circleci.com/gh/tilt-dev/tilt-example-java/tree/master.svg?style=shield)](https://circleci.com/gh/tilt-dev/tilt-example-java)
+[![Contribute](https://img.shields.io/static/v1?label=code%20with&message=che-code&logo=eclipseche&color=FDB940&labelColor=525C86)](https://eclipse-che.apps.mloriedo-devworkspaces.devcluster.openshift.com#https://github.com/l0rd/tilt-example-java)
 
 An example project that demonstrates a live-updating Java server in Kubernetes. Read [doc](https://docs.tilt.dev/example_java.html).
 
