@@ -1,15 +1,34 @@
 # -*- mode: Python -*-
 
-custom_build(
-  'quarkus-sync-image',
-  deps=['.'],
-  command='buildah bud -t $EXPECTED_REF -f ./src/main/docker/Dockerfile . && buildah push $EXPECTED_REF $EXPECTED_REF',
-  skips_local_docker = True,
-  live_update = [
-    sync('./src/', '/project/src'),
-    sync('./src/pom.xml', '/project/pom.xml')  
-  ],
-  entrypoint = 'mvn quarkus:dev')
+# There is no k8s context. Tilt it requires the k8s context to work.
+# oc login --server=$(oc whoami --show-server) --token=$(oc whoami -t)
+# Most of the case, the user must use is own credentials with correct RBAC.
 
+# Using quay.io as central register 
+# export repo=mmascia
+# 
+image = 'quay.io/' + os.environ['repo'] + '/quarkus-sync-image'
+
+# podman login quay.io/$repo
+#
+# the image name in the deployment must be dynamic src/main/kubernetes/app.yaml
+
+local_resource(
+  'java-compile',
+  'mvn clean package',
+  labels=['app'],
+  deps=['src', 'pom.xml'])
+
+load('ext://podman', 'podman_build')
+
+podman_build(
+  image,
+  '.',
+  extra_flags=['-f', 'src/main/docker/Dockerfile.jvm'],
+  live_update=[
+    sync('./target/*.jar','/deployments/app.jar'),
+])
+
+allow_k8s_contexts(k8s_context())
 k8s_yaml('src/main/kubernetes/app.yaml')
 k8s_resource('quarkus-sync-demo', port_forwards=[8080,5005])

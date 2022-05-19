@@ -1,4 +1,4 @@
-package dev.tilt.example;
+package dev.tilt;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ public class GreetingResourceTest {
           .when().get("/hello")
           .then()
              .statusCode(200)
-             .body(is("hello"));
+             .body(is("Hello from RESTEasy Reactive"));
     }
 
 }
