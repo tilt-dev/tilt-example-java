@@ -1,7 +1,26 @@
 # -*- mode: Python -*-
 
+# There is no k8s context. Tilt it requires the k8s context to work.
+# oc login --server=$(oc whoami --show-server) --token=$(oc whoami -t)
+# Most of the case, the user must use is own credentials with correct RBAC.
+
+# Using quay.io as central register 
+# export repo=mmascia
+# 
+image = 'quay.io/' + os.environ['repo'] + '/quarkus-sync-image'
+
+# buildah login quay.io/$repo
+#
+# the image name in the deployment must be dynamic src/main/kubernetes/app.yaml
+
+#local_resource(
+#  'java-compile',
+#  'mvn clean package',
+#  labels=['app'],
+#  deps=['./src', 'pom.xml'])
+
 custom_build(
-  'quarkus-sync-image',
+  image,
   deps=['.'],
   command='buildah bud -t $EXPECTED_REF -f ./src/main/docker/Dockerfile . && buildah push $EXPECTED_REF $EXPECTED_REF',
   skips_local_docker = True,
@@ -11,5 +30,6 @@ custom_build(
   ],
   entrypoint = 'mvn quarkus:dev')
 
+allow_k8s_contexts(k8s_context())
 k8s_yaml('src/main/kubernetes/app.yaml')
 k8s_resource('quarkus-sync-demo', port_forwards=[8080,5005])
