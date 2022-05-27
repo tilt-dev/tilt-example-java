@@ -1,34 +1,39 @@
 schemaVersion: 2.1.0
+metadata:
+  name: tilt-n-quarkus
+attributes:
+  controller.devfile.io/storage-type: ephemeral
+  controller.devfile.io/scc: container-build
 components:
-  - name: tilt-container
-    container:
-      image: quay.io/mloriedo/universal-developer-image:tilt
-      env:
-        - name: QUARKUS_HTTP_HOST
-          value: 0.0.0.0
-        - name: MAVEN_OPTS
-          value: "-Dmaven.repo.local=/home/user/.m2/repository"
-      memoryLimit: 2G
-      memoryRequest: 256Mi
-      cpuLimit: 200m
-      cpuRequest: 30m
-      endpoints:
-        - name: quarkus-development-server
-          targetPort: 8080
-          exposure: public
-          secure: false
-          protocol: http
-        - name: debug
-          targetPort: 5005
-          exposure: none
-          secure: false
-          protocol: tcp
-        - name: tests
-          targetPort: 8081
-          exposure: none
-          secure: false
-          protocol: tcp
-        - name: tilt
-          targetPort: 10350
-          exposure: public
-          protocol: http
+- name: tilt-container
+  container:
+    image: quay.io/mloriedo/universal-developer-image:tilt
+    env:
+      - name: QUARKUS_HTTP_HOST
+        value: 0.0.0.0
+      - name: MAVEN_OPTS
+        value: "-Dmaven.repo.local=/home/user/.m2/repository"
+    memoryLimit: 2G
+    memoryRequest: 256Mi
+    cpuLimit: 200m
+    cpuRequest: 30m
+    endpoints:
+      - name: quarkus-development-server
+        targetPort: 8080
+        exposure: public
+        secure: false
+        protocol: http
+      - name: debug
+        targetPort: 5005
+        exposure: none
+        secure: false
+        protocol: tcp
+      - name: tests
+        targetPort: 8081
+        exposure: none
+        secure: false
+        protocol: tcp
+      - name: tilt
+        targetPort: 10350
+        exposure: public
+        protocol: http
