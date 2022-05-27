@@ -7,7 +7,7 @@
 # Using quay.io as central register 
 # export repo=mmascia
 # 
-image = 'quay.io/' + os.environ['repo'] + '/quarkus-sync-image'
+image = 'quay.io/' + 'mloriedo' + '/quarkus-sync-image'
 
 # podman login quay.io/$repo
 #
