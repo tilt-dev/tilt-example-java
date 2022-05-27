@@ -37,3 +37,5 @@ components:
         targetPort: 10350
         exposure: public
         protocol: http
+        attributes:
+          urlRewriteSupported: false
