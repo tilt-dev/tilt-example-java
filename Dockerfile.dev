@@ -1,0 +1,23 @@
+FROM quay.io/devfile/universal-developer-image:ubi8-latest
+
+USER 0
+
+#Tilt
+RUN curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
+RUN chmod -R g=u /home/user/.tilt-dev
+
+# Some tweaks to make rootless buildah work
+RUN touch /etc/subgid /etc/subuid  && \
+    chmod g=u /etc/subgid /etc/subuid /etc/passwd  && \
+    echo user:10000:65536 > /etc/subuid  && \
+    echo user:10000:65536 > /etc/subgid
+
+# Use chroot since the default runc does not work when running rootless
+RUN echo "export BUILDAH_ISOLATION=chroot" >> "${HOME}"/.bashrc
+
+# Use VFS since fuse does not work
+RUN mkdir -p "${HOME}"/.config/containers && \
+   (echo '[storage]';echo 'driver = "vfs"') > "${HOME}"/.config/containers/storage.conf
+
+USER 1001
+
