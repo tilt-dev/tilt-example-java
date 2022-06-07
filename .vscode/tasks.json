@@ -7,7 +7,7 @@
         "label": "201-quarkus tilt up",
         "type": "shell",
         "command": "tilt",
-        "args": ["up", "-f", "Tiltfile.buildah"],
+        "args": ["up", "-f", "Tiltfile.buildah", "--host", "0.0.0.0", "--namespace", "${DEVWORKSPACE_NAMESPACE}"],
         "group": "test",
         "presentation": {
           "reveal": "always",

@@ -43,4 +43,4 @@ spec:
           volumeMounts:
             - name: m2-cache
               mountPath: /project
-          image: 'quay.io/mmascia/quarkus-sync-image'
+          image: 'quay.io/mloriedo/quarkus-sync-image'

@@ -21,8 +21,8 @@ components:
       - name: quarkus-development-server
         targetPort: 8080
         exposure: public
-        secure: false
-        protocol: http
+        attributes:
+          urlRewriteSupported: false
       - name: debug
         targetPort: 5005
         exposure: none

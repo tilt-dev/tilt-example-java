@@ -16,7 +16,6 @@ image = 'quay.io/' + 'mloriedo' + '/quarkus-sync-image'
 local_resource(
   'java-compile',
   'mvn clean package',
-  labels=['app'],
   deps=['src', 'pom.xml'])
 
 load('ext://podman', 'podman_build')
@@ -29,6 +28,6 @@ podman_build(
     sync('./target/*.jar','/deployments/app.jar'),
 ])
 
-allow_k8s_contexts(k8s_context())
+allow_k8s_contexts('logged-user')
 k8s_yaml('src/main/kubernetes/app.yaml')
-k8s_resource('quarkus-sync-demo', port_forwards=[8080,5005])
+k8s_resource(workload = 'quarkus-sync-demo', port_forwards=[8080,5005])
