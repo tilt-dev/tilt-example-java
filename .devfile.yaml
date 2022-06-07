@@ -41,18 +41,26 @@ components:
         attributes:
           urlRewriteSupported: false
 commands:
-  - id: tilt-up
+  - id: 0-workaround1-patchdw
+    exec:
+      commandLine: 'kubectl patch dw  --type=merge -p ''{"spec": {"template": {"attributes": {"controller.devfile.io/scc": "container-build"}}}}'''
+      component: tilt-container
+  - id: 0-workaround2-podmanlogin
+    exec:
+      commandLine: 'podman login quay.io'
+      component: tilt-container
+  - id: 1-tilt-up
     exec:
       commandLine: 'tilt up -f Tiltfile.buildah --host 0.0.0.0 --namespace ${DEVWORKSPACE_NAMESPACE}'
       workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
-  - id: tilt-down
-    exec:
-      commandLine: 'tilt down -f Tiltfile.buildah'
-      workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
-      component: tilt-container
-  - id: poll
+  - id: 2-poll
     exec:
       commandLine: './poll.sh'
+      workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
+      component: tilt-container
+  - id: 3-tilt-down
+    exec:
+      commandLine: 'tilt down -f Tiltfile.buildah'
       workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
