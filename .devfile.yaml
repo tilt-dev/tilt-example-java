@@ -44,15 +44,15 @@ commands:
   - id: tilt-up
     exec:
       commandLine: 'tilt up -f Tiltfile.buildah --host 0.0.0.0 --namespace ${DEVWORKSPACE_NAMESPACE}'
-      workingDir: 201-quarkus-live-update
+      workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
   - id: tilt-down
     exec:
       commandLine: 'tilt down -f Tiltfile.buildah'
-      workingDir: 201-quarkus-live-update
+      workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
   - id: poll
     exec:
       commandLine: './poll.sh'
-      workingDir: 201-quarkus-live-update
+      workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
