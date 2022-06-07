@@ -43,11 +43,13 @@ components:
 commands:
   - id: 0-workaround1-patchdw
     exec:
-      commandLine: 'kubectl patch dw  --type=merge -p ''{"spec": {"template": {"attributes": {"controller.devfile.io/scc": "container-build"}}}}'''
+      commandLine: 'kubectl patch dw tilt-n-quarkus --type=merge -p ''{"spec": {"template": {"attributes": {"controller.devfile.io/scc": "container-build"}}}}'''
+      workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
   - id: 0-workaround2-podmanlogin
     exec:
       commandLine: 'podman login quay.io'
+      workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
   - id: 1-tilt-up
     exec:
