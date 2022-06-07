@@ -20,6 +20,7 @@ components:
     endpoints:
       - name: quarkus-development-server
         targetPort: 8080
+        path: /test
         exposure: public
         attributes:
           urlRewriteSupported: false

@@ -1,16 +1,8 @@
 # -*- mode: Python -*-
 
-# There is no k8s context. Tilt it requires the k8s context to work.
-# oc login --server=$(oc whoami --show-server) --token=$(oc whoami -t)
-# Most of the case, the user must use is own credentials with correct RBAC.
-
-# Using quay.io as central register 
-# export repo=mmascia
-# 
 image = 'quay.io/' + 'mloriedo' + '/quarkus-sync-image'
 
 # podman login quay.io/$repo
-#
 # the image name in the deployment must be dynamic src/main/kubernetes/app.yaml
 
 local_resource(
@@ -28,6 +20,8 @@ podman_build(
     sync('./target/*.jar','/deployments/app.jar'),
 ])
 
+# The k8s context named "looged-user" should be automatically 
+# injected when starting the workspace from Che dashboard.
 allow_k8s_contexts('logged-user')
 k8s_yaml('src/main/kubernetes/app.yaml')
 k8s_resource(workload = 'quarkus-sync-demo', port_forwards=[8080,5005])

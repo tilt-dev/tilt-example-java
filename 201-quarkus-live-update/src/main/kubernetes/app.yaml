@@ -23,6 +23,8 @@ spec:
       labels:
         app: quarkus-sync-demo
     spec:
+      strategy:
+        type: Recreate
       volumes:
         - name: m2-cache
           persistentVolumeClaim:
