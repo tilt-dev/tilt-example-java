@@ -20,8 +20,8 @@ components:
     endpoints:
       - name: quarkus-development-server
         targetPort: 8080
-        path: /test
-        exposure: public
+        path: /hello
+        protocol: http
         attributes:
           urlRewriteSupported: false
       - name: debug
@@ -40,3 +40,19 @@ components:
         protocol: http
         attributes:
           urlRewriteSupported: false
+commands:
+  - id: tilt-up
+    exec:
+      commandLine: 'tilt up -f Tiltfile.buildah --host 0.0.0.0 --namespace ${DEVWORKSPACE_NAMESPACE}'
+      workingDir: 201-quarkus-live-update
+      component: tilt-container
+  - id: tilt-down
+    exec:
+      commandLine: 'tilt down -f Tiltfile.buildah'
+      workingDir: 201-quarkus-live-update
+      component: tilt-container
+  - id: poll
+    exec:
+      commandLine: './poll.sh'
+      workingDir: 201-quarkus-live-update
+      component: tilt-container
