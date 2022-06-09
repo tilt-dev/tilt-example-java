@@ -3,7 +3,7 @@ metadata:
   name: tilt-n-quarkus
 attributes:
   controller.devfile.io/storage-type: ephemeral
-  controller.devfile.io/scc: container-build
+  controller.devfile.io/scc: nonroot
 components:
 - name: tilt-container
   container:
@@ -43,7 +43,7 @@ components:
 commands:
   - id: 0-workaround1-patchdw
     exec:
-      commandLine: 'kubectl patch dw tilt-n-quarkus --type=merge -p ''{"spec": {"template": {"attributes": {"controller.devfile.io/scc": "container-build"}}}}'''
+      commandLine: 'kubectl patch dw tilt-n-quarkus --type=merge -p ''{"spec": {"template": {"attributes": {"controller.devfile.io/scc": "nonroot"}}}}'''
       workingDir: ${PROJECT_SOURCE}/201-quarkus-live-update
       component: tilt-container
   - id: 0-workaround2-podmanlogin
