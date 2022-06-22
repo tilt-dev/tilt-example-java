@@ -37,7 +37,7 @@ components:
       - name: tilt
         targetPort: 10350
         exposure: public
-        protocol: http
+        protocol: https
         attributes:
           urlRewriteSupported: false
 commands:
