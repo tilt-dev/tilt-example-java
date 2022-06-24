@@ -3,7 +3,7 @@ metadata:
   name: tilt-n-quarkus
 attributes:
   controller.devfile.io/storage-type: ephemeral
-  controller.devfile.io/scc: nonroot
+  controller.devfile.io/scc: container-build
 components:
 - name: tilt-container
   container:
