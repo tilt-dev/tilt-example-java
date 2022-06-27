@@ -15,7 +15,7 @@ components:
         value: "-Dmaven.repo.local=/home/user/.m2/repository"
     memoryLimit: 4G
     memoryRequest: 256Mi
-    cpuLimit: 500m
+    cpuLimit: 1000m
     cpuRequest: 30m
     endpoints:
       - name: quarkus-development-server
