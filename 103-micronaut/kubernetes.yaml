@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-java
+  labels:
+    app: example-java
+spec:
+  selector:
+    matchLabels:
+      app: example-java
+  template:
+    metadata:
+      labels:
+        app: example-java
+    spec:
+      containers:
+      - name: example-java
+        image: example-java-image
+        ports:
+        - containerPort: 8080
