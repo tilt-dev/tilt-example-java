@@ -31,6 +31,8 @@ your project for live updates.
 - [102-jib-live-update](102-jib-live-update): An example of how to use
   live_update with Jib. It requires a lot of knowledge of Jib internals, but you
   can make it work!
+- [103-micronaut](103-micronaut): An example of how to integrate Tilt with the
+  [Micronaut framework](https://micronaut.io/).
 - [201-quarkus-live-update](201-quarkus-live-update): An example of how to use
   live_update with [Quarkus](https://quarkus.io/), a container-first, hot-reloading framework for writing
   Java applications.

@@ -25,6 +25,10 @@ echo "Testing 4-recommended"
 tilt ci --file 4-recommended/Tiltfile
 tilt down --file 4-recommended/Tiltfile
 
+echo "Testing 103-micronaut"
+tilt ci --file 103-micronaut/Tiltfile
+tilt down --file 103-micronaut/Tiltfile
+
 echo "Testing 401-spring-boot-layertools"
 tilt ci --file 401-spring-boot-layertools/Tiltfile
 tilt down --file 401-spring-boot-layertools/Tiltfile

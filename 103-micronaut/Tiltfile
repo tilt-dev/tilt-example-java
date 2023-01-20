@@ -1,0 +1,12 @@
+# -*- mode: Python -*-
+
+# example-java-image is set in build.gradle.
+#
+# The gradle docker plugin always builds to the same image name,
+# so we need to re-tag.
+custom_build(
+  'example-java-image',
+  './gradlew dockerBuild && docker tag example-java-image $EXPECTED_REF',
+  deps=['src'])
+k8s_yaml('kubernetes.yaml')
+k8s_resource('example-java', port_forwards=8080)
