@@ -11,7 +11,7 @@ To run these examples, you should also have:
 - javac (a JDK)
 - unzip
 - rsync
-- python
+- python3
 
 ## Fastest Deployment
 
